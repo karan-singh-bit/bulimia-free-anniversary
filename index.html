@@ -136,14 +136,22 @@
       confettiAnimationId = requestAnimationFrame(animateConfetti);
     }
 
-    // Trigger confetti when envelope is clicked
+    // Toggle envelope open/close & confetti
     const envelope = document.querySelector('.envelope');
     const letter = document.querySelector('.letter');
 
     envelope.addEventListener('click', () => {
       letter.classList.toggle('show');
       envelope.classList.toggle('hide');
-      startConfetti();
+
+      if (!envelope.classList.contains('hide')) {
+        // Envelope closed
+        confettiCanvas.style.display = 'none';
+        cancelAnimationFrame(confettiAnimationId);
+      } else {
+        // Envelope opened
+        startConfetti();
+      }
     });
   </script>
 </body>
