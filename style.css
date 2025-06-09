@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap');
 
+/* Animated Gradient Background */
 body {
   font-family: 'Roboto', sans-serif;
-  background: #e6f0ff;
+  background: linear-gradient(270deg, #a8dadc, #457b9d, #1d3557, #a8dadc);
+  background-size: 800% 800%;
+  animation: gradientShift 30s ease infinite;
   color: #333;
   margin: 0;
   padding: 0;
@@ -10,6 +13,12 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+@keyframes gradientShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
 header {
@@ -80,179 +89,143 @@ header p {
   gap: 1.5em;
 }
 
-/* Envelope container styling */
-.envelope-container {
+section.message-wrapper {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 600px;
+  flex-shrink: 0;
 }
 
-/* Big envelope styling */
+/* Envelope styles */
 .envelope {
-  position: relative;
-  width: 320px;
-  height: 250px;
-  background: #e05588;
-  margin: 1em 0;
   cursor: pointer;
-  border-radius: 25px;
-  box-shadow: 0 10px 20px rgba(204, 0, 102, 0.6);
-  transition: transform 0.4s ease;
+  margin: 0 auto 2em;
+  width: 180px;
+  height: 140px;
+  position: relative;
+  perspective: 600px;
   user-select: none;
-  overflow: visible;
-  filter: drop-shadow(0 0 8px #e05588);
+  transition: transform 0.7s ease;
 }
 
 .envelope:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
-/* Flap of the envelope */
-.flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 320px;
-  height: 125px;
-  background: linear-gradient(135deg, #c33570 0%, #e76f9c 100%);
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-  box-shadow: inset 0 5px 15px rgba(255, 255, 255, 0.3);
-  transition: transform 0.6s ease;
-  transform-origin: top center;
-}
-
-/* Envelope open flap animation */
-.envelope.open .flap {
-  transform: rotateX(-180deg);
-  box-shadow: none;
-}
-
-/* Envelope body */
-.body {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 320px;
-  height: 125px;
-  background: linear-gradient(180deg, #e05588 0%, #c33570 100%);
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  box-shadow: inset 0 5px 15px rgba(255, 255, 255, 0.3);
-}
-
-/* “Open Me” label on the envelope */
-.open-label {
-  position: absolute;
-  bottom: 20px;
-  width: 100%;
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  color: #fff;
-  font-size: 1.8em;
-  letter-spacing: 1.5px;
-  text-shadow: 0 0 7px rgba(255, 111, 145, 0.9);
-  user-select: none;
-  pointer-events: none; /* clicks pass through */
-}
-
-/* Hidden letter styling */
-section.message {
-  max-width: 600px;
-  background: #ffffff;
-  padding: 2.5em 3em;
-  border-radius: 15px;
-  box-shadow: 0 12px 30px rgba(26, 60, 128, 0.25);
-  font-size: 1.15em;
-  line-height: 1.6;
-  color: #1a3c80;
-  font-family: 'Roboto', sans-serif;
-  flex-shrink: 0;
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%) scale(0);
-  transform-origin: top center;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+.envelope.hide {
+  transform: rotateX(90deg);
   opacity: 0;
-  z-index: 10;
   pointer-events: none;
 }
 
-/* Show letter when not hidden */
-section.message:not(.hidden) {
-  transform: translateX(-50%) scale(1);
-  opacity: 1;
-  pointer-events: auto;
-  position: relative;
-  margin-top: 1.5em;
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 70px;
+  background: #d63384;
+  border-radius: 15px 15px 0 0;
+  box-shadow: inset 0 -4px 8px rgba(255,255,255,0.3);
+  clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  transition: background 0.3s ease;
 }
 
-/* Title styles inside letter */
-section.message h2 {
+.envelope-flap:hover {
+  background: #b3276b;
+}
+
+.envelope-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 180px;
+  height: 70px;
+  background: #f8bbd0;
+  border-radius: 0 0 15px 15px;
+  box-shadow: inset 0 4px 8px rgba(255,255,255,0.5);
+}
+
+.envelope-text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 40%;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: white;
+  font-size: 1.4em;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Letter styles */
+section.message.letter {
+  background: #ffffff;
+  padding: 2.5em 3em;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(26, 60, 128, 0.3);
+  font-size: 1.2em;
+  line-height: 1.7;
+  color: #1a3c80;
+  font-family: 'Roboto', sans-serif;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 1s ease, opacity 1s ease;
+}
+
+section.message.letter.show {
+  max-height: 2000px; /* large enough to show content */
+  opacity: 1;
+  overflow: visible;
+}
+
+section.message.letter h2 {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   font-size: 2em;
   margin-bottom: 0.5em;
-  color: #25497a;
+  color: #d63384;
 }
 
+section.message.letter p {
+  margin-bottom: 1.25em;
+}
+
+/* Footer styles */
 footer {
-  background: #cce0ff;
-  padding: 1.2em;
-  font-size: 1em;
-  color: #1a3c80;
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.07);
   margin-top: auto;
+  padding: 1.2em 0;
+  font-size: 1em;
+  color: #e0e0e0;
+  background: rgba(26, 60, 128, 0.5);
+  text-align: center;
   font-family: 'Roboto', sans-serif;
 }
 
-/* Responsive for smaller screens */
-@media (max-width: 900px) {
+/* Confetti canvas */
+#confetti-canvas {
+  position: fixed;
+  pointer-events: none;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 9999;
+  display: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 950px) {
   .gallery-layout {
     flex-direction: column;
     align-items: center;
   }
-
-  .side-photo,
-  section.message {
-    max-width: 90vw;
-  }
-
   .right-photos {
-    flex-direction: row;
-    justify-content: center;
-    gap: 1em;
+    flex-direction: column;
   }
-}
-
-/* Responsive GIF scaling for mobile */
-@media (max-width: 600px) {
-  .header-gif {
-    width: 150px;
-    height: 150px;
-  }
-
-  /* Smaller envelope on small screens */
-  .envelope {
-    width: 240px;
-    height: 180px;
-  }
-
-  .flap, .body {
-    width: 240px;
-    height: 90px;
-  }
-
-  .open-label {
-    font-size: 1.3em;
-  }
-
-  section.message {
+  .side-photo {
     max-width: 90vw;
-    font-size: 1em;
+  }
+  .message-wrapper {
+    max-width: 90vw;
   }
 }
