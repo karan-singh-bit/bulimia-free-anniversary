@@ -234,6 +234,12 @@ footer {
   z-index: 9999;
   display: none;
 }
+/* Make the letter clickable to close */
+section.message.letter {
+  cursor: pointer;
+  position: relative;
+}
+
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -252,4 +258,5 @@ footer {
     max-width: 100%;
     padding: 0 1em;
   }
+
 }
