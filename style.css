@@ -21,7 +21,7 @@ header {
 
 header h1 {
   margin: 0;
-  font-size: 3em;
+  font-size: 3em; /* fixed title size */
   color: #1a3c80;
   font-family: 'Playfair Display', serif;
   letter-spacing: 2px;
@@ -32,21 +32,20 @@ header h1 {
   gap: 0.5em;
 }
 
+/* Extra large GIF next to the title */
 .header-gif {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   object-fit: contain;
-  vertical-align: middle;
-  border-radius: 20px;
-  filter: drop-shadow(0 0 8px #1a3c80);
-  /* Optional: add some smooth scaling on hover */
+  border-radius: 25px;
+  filter: drop-shadow(0 0 10px #1a3c80);
   transition: transform 0.3s ease;
+  vertical-align: middle;
 }
 
 .header-gif:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
-
 
 header p {
   font-size: 1.3em;
@@ -128,5 +127,13 @@ footer {
     flex-direction: row;
     justify-content: center;
     gap: 1em;
+  }
+}
+
+/* Responsive GIF scaling for mobile */
+@media (max-width: 600px) {
+  .header-gif {
+    width: 150px;
+    height: 150px;
   }
 }
