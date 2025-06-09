@@ -140,19 +140,23 @@
     const envelope = document.querySelector('.envelope');
     const letter = document.querySelector('.letter');
 
-    envelope.addEventListener('click', () => {
-      letter.classList.toggle('show');
-      envelope.classList.toggle('hide');
+    let isOpen = false;
 
-      if (!envelope.classList.contains('hide')) {
-        // Envelope closed
-        confettiCanvas.style.display = 'none';
-        cancelAnimationFrame(confettiAnimationId);
-      } else {
-        // Envelope opened
-        startConfetti();
-      }
-    });
+envelope.addEventListener('click', () => {
+  isOpen = !isOpen;
+
+  if (isOpen) {
+    letter.classList.add('show');
+    envelope.classList.add('hide');
+    startConfetti();
+  } else {
+    letter.classList.remove('show');
+    envelope.classList.remove('hide');
+    cancelAnimationFrame(confettiAnimationId);
+    confettiCanvas.style.display = 'none';
+  }
+});
+
   </script>
 </body>
 </html>
