@@ -80,36 +80,137 @@ header p {
   gap: 1.5em;
 }
 
-
-section.message {
-  max-width: 600px;
-  background: #ffffff;
-  padding: 2.5em 3em;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(26, 60, 128, 0.15);
-  font-size: 1.15em;
-  line-height: 1.6;
-  color: #1a3c80;
-  font-family: 'Roboto', sans-serif;
+/* Envelope container and animation */
+.message-envelope {
   flex-shrink: 0;
+  max-width: 600px;
+  margin: 0 1em;
+  display: flex;
+  justify-content: center;
 }
 
-section.message h2 {
+.envelope-container {
+  position: relative;
+  width: 350px;
+  height: 250px;
+  cursor: pointer;
+  perspective: 1000px;
+  outline: none;
+}
+
+.envelope {
+  width: 100%;
+  height: 100%;
+  background: #ff6f91;
+  border-radius: 15px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 20px rgba(255, 111, 145, 0.6);
+}
+
+/* Flap - the triangular flap */
+.envelope .flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 175px solid transparent;
+  border-right: 175px solid transparent;
+  border-bottom: 120px solid #ff477e;
+  border-radius: 15px 15px 0 0;
+  transform-origin: top center;
+  transition: border-bottom-color 0.8s;
+  box-shadow: 0 5px 15px rgba(255, 71, 126, 0.7);
+}
+
+/* Body of envelope */
+.envelope .body {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 130px;
+  background: #ff6f91;
+  border-radius: 0 0 15px 15px;
+  box-shadow: inset 0 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Letter content hidden by default */
+.letter {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: #fff0f5;
+  border-radius: 12px;
+  padding: 2em;
+  box-shadow: 0 4px 15px rgba(255, 111, 145, 0.5);
+  color: #1a3c80;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
+  line-height: 1.5;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateZ(50px);
+  transition: opacity 0.6s ease 0.2s;
+  overflow-y: auto;
+}
+
+/* Letter headings */
+.letter h2 {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 2em;
-  margin-bottom: 0.5em;
+  font-size: 1.8em;
+  margin-bottom: 0.6em;
   color: #25497a;
 }
 
-footer {
-  background: #cce0ff;
-  padding: 1.2em;
-  font-size: 1em;
-  color: #1a3c80;
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.07);
-  margin-top: auto;
-  font-family: 'Roboto', sans-serif;
+/* Open state - flips envelope and shows letter */
+.envelope-container.open .envelope {
+  transform: rotateX(-140deg);
+  box-shadow: 0 20px 30px rgba(255, 111, 145, 0.9);
+}
+
+.envelope-container.open .envelope .flap {
+  border-bottom-color: #ffc0d1;
+  box-shadow: 0 8px 25px rgba(255, 192, 209, 0.9);
+}
+
+.envelope-container.open .letter {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Focus outline for accessibility */
+.envelope-container:focus {
+  outline: 3px solid #ff6f91;
+  outline-offset: 5px;
+}
+
+/* Scroll styling for letter */
+.letter::-webkit-scrollbar {
+  width: 8px;
+}
+
+.letter::-webkit-scrollbar-track {
+  background: #ffe6f0;
+  border-radius: 4px;
+}
+
+.letter::-webkit-scrollbar-thumb {
+  background-color: #ff6f91;
+  border-radius: 4px;
+}
+
+/* Responsive envelope size */
+@media (max-width: 900px) {
+  .envelope-container {
+    width: 90vw;
+    height: 60vw;
+    max-height: 350px;
+  }
 }
 
 /* Responsive for smaller screens */
@@ -120,7 +221,7 @@ footer {
   }
 
   .side-photo,
-  section.message {
+  .message-envelope {
     max-width: 90vw;
   }
 
