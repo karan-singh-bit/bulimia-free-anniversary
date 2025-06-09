@@ -136,27 +136,27 @@
       confettiAnimationId = requestAnimationFrame(animateConfetti);
     }
 
-    // Toggle envelope open/close & confetti
+    // Envelope open/close logic
     const envelope = document.querySelector('.envelope');
     const letter = document.querySelector('.letter');
-
     let isOpen = false;
 
-envelope.addEventListener('click', () => {
-  isOpen = !isOpen;
+    envelope.addEventListener('click', () => {
+      if (isOpen) return;
+      isOpen = true;
+      letter.classList.add('show');
+      envelope.classList.add('hide');
+      startConfetti();
+    });
 
-  if (isOpen) {
-    letter.classList.add('show');
-    envelope.classList.add('hide');
-    startConfetti();
-  } else {
-    letter.classList.remove('show');
-    envelope.classList.remove('hide');
-    cancelAnimationFrame(confettiAnimationId);
-    confettiCanvas.style.display = 'none';
-  }
-});
-
+    letter.addEventListener('click', () => {
+      if (!isOpen) return;
+      isOpen = false;
+      letter.classList.remove('show');
+      envelope.classList.remove('hide');
+      cancelAnimationFrame(confettiAnimationId);
+      confettiCanvas.style.display = 'none';
+    });
   </script>
 </body>
 </html>
