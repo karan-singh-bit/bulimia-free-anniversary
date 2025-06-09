@@ -76,9 +76,10 @@ header p {
 
 .right-photos {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1.5em;
 }
+
 
 section.message {
   max-width: 600px;
