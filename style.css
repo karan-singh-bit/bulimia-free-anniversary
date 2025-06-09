@@ -33,12 +33,12 @@ header h1 {
 }
 
 .header-gif {
-  width: 60px;
-  height: 60px;
+  width: 140px;
+  height: 140px;
   object-fit: contain;
   vertical-align: middle;
-  border-radius: 10px;
-  filter: drop-shadow(0 0 3px #1a3c80);
+  border-radius: 15px;
+  filter: drop-shadow(0 0 6px #1a3c80);
 }
 
 header p {
