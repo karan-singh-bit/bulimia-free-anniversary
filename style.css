@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background: #e6f0ff; /* light blue */
+  background: #e6f0ff;
   color: #333;
   margin: 0;
   padding: 0;
@@ -13,9 +13,10 @@ body {
 }
 
 header {
-  background: #cce0ff; /* lighter blue */
+  background: #cce0ff;
   padding: 3em 1em;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 header h1 {
@@ -25,6 +26,19 @@ header h1 {
   font-family: 'Playfair Display', serif;
   letter-spacing: 2px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.header-gif {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  vertical-align: middle;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 3px #1a3c80);
 }
 
 header p {
@@ -33,16 +47,31 @@ header p {
   color: #3a5bbf;
 }
 
-.content {
+.gallery-layout {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  flex-wrap: wrap;
   gap: 2.5em;
   margin: 3em auto;
-  max-width: 1000px;
-  text-align: left;
+  max-width: 1100px;
   padding: 0 1em;
+  text-align: left;
+  flex-wrap: wrap;
+}
+
+.side-photo {
+  max-width: 250px;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(26, 60, 128, 0.2);
+  object-fit: cover;
+  margin-bottom: 1.5em;
+}
+
+.right-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
 }
 
 section.message {
@@ -55,6 +84,7 @@ section.message {
   line-height: 1.6;
   color: #1a3c80;
   font-family: 'Roboto', sans-serif;
+  flex-shrink: 0;
 }
 
 section.message h2 {
@@ -65,15 +95,6 @@ section.message h2 {
   color: #25497a;
 }
 
-.right-photo {
-  max-width: 320px;
-  width: 100%;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(26, 60, 128, 0.2);
-  object-fit: cover;
-  align-self: center;
-}
-
 footer {
   background: #cce0ff;
   padding: 1.2em;
@@ -82,4 +103,23 @@ footer {
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.07);
   margin-top: auto;
   font-family: 'Roboto', sans-serif;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 900px) {
+  .gallery-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .side-photo,
+  section.message {
+    max-width: 90vw;
+  }
+
+  .right-photos {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+  }
 }
