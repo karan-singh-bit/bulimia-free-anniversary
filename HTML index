@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One Year Strong ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Happy 1 Year Bulimia-Free 🎉</h1>
+    <p>You did it, and I couldn’t be prouder of you.</p>
+  </header>
+
+  <section class="message">
+    <h2>Dear [Her Name],</h2>
+    <p>
+      Today marks one full year of freedom — a year of strength, healing, and growth.
+      I am endlessly proud of you. Watching you fight, rise, and reclaim your life has been the most inspiring part of mine.
+    </p>
+    <p>
+      This isn't just a celebration of time — it's a celebration of *you*. Your courage, your heart, your soul.
+      You are not your past. You are your power.
+    </p>
+    <p>Forever by your side, <br/> – [Your Name]</p>
+  </section>
+
+  <footer>
+    © 2025 • One Year Strong • With love and pride
+  </footer>
+</body>
+</html>
