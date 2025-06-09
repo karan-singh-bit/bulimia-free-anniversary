@@ -1,22 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap');
 
 body {
-  font-family: 'Arial', sans-serif;
-  background: #fff0f5;
+  font-family: 'Roboto', sans-serif;
+  background: #e6f0ff; /* light blue */
   color: #333;
   margin: 0;
   padding: 0;
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-  background: #ffe3ec;
+  background: #cce0ff; /* lighter blue */
   padding: 3em 1em;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
   margin: 0;
-  font-size: 2.5em;
-  color: #d63384;
+  font-size: 3em;
+  color: #1a3c80;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+header p {
+  font-size: 1.3em;
+  margin-top: 0.5em;
+  color: #3a5bbf;
 }
 
 .content {
@@ -24,8 +38,8 @@ header h1 {
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 2em;
-  margin: 2em auto;
+  gap: 2.5em;
+  margin: 3em auto;
   max-width: 1000px;
   text-align: left;
   padding: 0 1em;
@@ -34,22 +48,38 @@ header h1 {
 section.message {
   max-width: 600px;
   background: #ffffff;
-  padding: 2em;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 2.5em 3em;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(26, 60, 128, 0.15);
+  font-size: 1.15em;
+  line-height: 1.6;
+  color: #1a3c80;
+  font-family: 'Roboto', sans-serif;
+}
+
+section.message h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  color: #25497a;
 }
 
 .right-photo {
-  max-width: 300px;
+  max-width: 320px;
   width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(26, 60, 128, 0.2);
+  object-fit: cover;
+  align-self: center;
 }
 
 footer {
-  background: #ffe3ec;
-  padding: 1em;
-  font-size: 0.9em;
-  color: #555;
-  margin-top: 3em;
+  background: #cce0ff;
+  padding: 1.2em;
+  font-size: 1em;
+  color: #1a3c80;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.07);
+  margin-top: auto;
+  font-family: 'Roboto', sans-serif;
 }
