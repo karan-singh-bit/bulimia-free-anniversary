@@ -18,17 +18,26 @@
   <div class="gallery-layout">
     <img src="photo-left.jpg" alt="Memory left" class="side-photo" />
     
-    <section class="message">
-      <h2>Dear Joanna,</h2>
-      <p>
-        Today marks one full year of freedom — a year of strength, healing, and growth.
-        I am endlessly proud of you. Watching you fight, rise, and reclaim your life has been the most inspiring part of mine.
-      </p>
-      <p>
-        This isn't just a celebration of time — it's a celebration of <em>you</em>. Your courage, your heart, your soul.
-        You are not your past. You are your power.
-      </p>
-      <p>Forever by your side, <br /> – Karan</p>
+    <!-- Envelope replaces the letter message -->
+    <section class="message-envelope">
+      <div class="envelope-container" tabindex="0" aria-label="Open the letter">
+        <div class="envelope">
+          <div class="flap"></div>
+          <div class="body"></div>
+        </div>
+        <div class="letter">
+          <h2>Dear Joanna,</h2>
+          <p>
+            Today marks one full year of freedom — a year of strength, healing, and growth.
+            I am endlessly proud of you. Watching you fight, rise, and reclaim your life has been the most inspiring part of mine.
+          </p>
+          <p>
+            This isn't just a celebration of time — it's a celebration of <em>you</em>. Your courage, your heart, your soul.
+            You are not your past. You are your power.
+          </p>
+          <p>Forever by your side, <br /> – Karan</p>
+        </div>
+      </div>
     </section>
 
     <div class="right-photos">
@@ -40,5 +49,20 @@
   <footer>
     © 2025 • One Year Strong • With love and pride
   </footer>
+
+  <script>
+    const envelopeContainer = document.querySelector('.envelope-container');
+
+    envelopeContainer.addEventListener('click', () => {
+      envelopeContainer.classList.toggle('open');
+    });
+
+    envelopeContainer.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        envelopeContainer.classList.toggle('open');
+      }
+    });
+  </script>
 </body>
 </html>
