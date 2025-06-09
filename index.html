@@ -18,28 +18,32 @@
   <div class="gallery-layout">
     <img src="photo-left.jpg" alt="Memory left" class="side-photo" />
     
-    <!-- Envelope replaces the letter message -->
-    <section class="message-envelope">
-      <div class="envelope-container" tabindex="0" aria-label="Open the letter">
-        <div class="envelope">
-          <div class="flap"></div>
-          <div class="body"></div>
-          <div class="open-label">Open Me ❤️</div>
-        </div>
-        <div class="letter">
-          <h2>Dear Joanna,</h2>
-          <p>
-            Today marks one full year of freedom — a year of strength, healing, and growth.
-            I am endlessly proud of you. Watching you fight, rise, and reclaim your life has been the most inspiring part of mine.
-          </p>
-          <p>
-            This isn't just a celebration of time — it's a celebration of <em>you</em>. Your courage, your heart, your soul.
-            You are not your past. You are your power.
-          </p>
-          <p>Forever by your side, <br /> – Karan</p>
-        </div>
+    <!-- Envelope and letter container -->
+    <div class="envelope-container">
+      <div class="envelope" onclick="toggleLetter()" title="Click to open the letter">
+        <div class="flap"></div>
+        <div class="body"></div>
+        <div class="open-label">Open Me ❤️</div>
       </div>
-    </section>
+      <section class="message hidden" id="letter">
+        <h2>Dear Joanna,</h2>
+        <p>Today is such a big day! I want to tell you how proud I am of you. It is officially one year of healing yourself. Achieving this goal is not only impressive but shows how strong you are as a person. I am so proud of you for achieving this goal and proud of every single moment big and small that you faced through this journey.</p>
+
+        <p>I have seen all ways you faced challenges and there was only one person that came out on top. Your strength makes you extremely extraordinary. With all the added challenges you faced. Coming out with your held high and the beautiful smile you have makes this day even more special.</p>
+
+        <p>This journey is fully yours and I am so happy to be beside you and remind you how special you are on the days you may forget. Or on days like this that we get to celebrate.</p>
+
+        <p>Here’s to one year clean my queen, You have kicked bulimia in the butt. And I keep saying but I am proud so proud (and very obsessed).</p>
+
+        <p>You have turned chaos into progress.</p>
+
+        <p>You’re strong, you’re weird, and sweet as pie.<br/>
+        Ain’t I just the luckiest kinda guy.</p>
+
+        <p>I love you foreverever,<br/>
+        – Karan</p>
+      </section>
+    </div>
 
     <div class="right-photos">
       <img src="photo-right-top.jpg" alt="Memory right top" class="side-photo" />
@@ -52,18 +56,10 @@
   </footer>
 
   <script>
-    const envelopeContainer = document.querySelector('.envelope-container');
-
-    envelopeContainer.addEventListener('click', () => {
-      envelopeContainer.classList.toggle('open');
-    });
-
-    envelopeContainer.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        envelopeContainer.classList.toggle('open');
-      }
-    });
+    function toggleLetter() {
+      const letter = document.getElementById('letter');
+      letter.classList.toggle('hidden');
+    }
   </script>
 </body>
 </html>
